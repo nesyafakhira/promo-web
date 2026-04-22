@@ -1,0 +1,30 @@
+.brand-font { font-family: 'Playfair Display', serif; }
+        
+        /* Animasi Marquee Seamless Tanpa Henti */
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: flex;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Animasi Muncul saat Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 100ms; }
+        .delay-2 { transition-delay: 200ms; }
+        .delay-3 { transition-delay: 300ms; }
