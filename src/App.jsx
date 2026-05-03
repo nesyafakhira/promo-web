@@ -296,7 +296,7 @@ export default function App() {
                         <p className="text-xs md:text-sm text-[#F9F6F0]/50">© 2026 Chef's Kiss. All rights reserved.</p>
                         <div className="flex gap-6 text-sm">
                             <a href="https://instagram.com/chefskisstory" target="_blank" rel="noreferrer" className="text-[#F9F6F0]/50 hover:text-[#E6C287] transition font-medium">Instagram</a>
-                            <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" className="text-[#F9F6F0]/50 hover:text-[#E6C287] transition font-medium">WhatsApp</a>
+                            <a href="https://wa.me/6282171237157" target="_blank" rel="noreferrer" className="text-[#F9F6F0]/50 hover:text-[#E6C287] transition font-medium">WhatsApp</a>
                         </div>
                     </div>
                 </div>
