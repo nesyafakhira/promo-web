@@ -13,6 +13,7 @@ import imgLychee from './assets/lychee-tea.png';
 import imgBundling1 from './assets/bundling-1.png'; 
 import imgBundling2 from './assets/bundling-2.png';
 import imgHero from './assets/hero.png';
+import imgQris from './assets/qris.jpeg'; 
 
 // --- DATA ---
 const MENUS = [
@@ -266,7 +267,7 @@ export default function App() {
 
             {/* FLOATING WA BUTTON */}
             {page === 'home' && (
-                <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Chef's%20Kiss!%20Saya%20mau%20tanya-tanya%20nih." target="_blank" rel="noreferrer" className="fixed bottom-6 right-6 z-30 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition duration-300 flex items-center justify-center animate-bounce">
+                <a href="https://wa.me/6282171237157?text=Halo%20Admin%20Chef's%20Kiss!%20Saya%20mau%20tanya-tanya%20nih." target="_blank" rel="noreferrer" className="fixed bottom-6 right-6 z-30 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition duration-300 flex items-center justify-center animate-bounce">
                     <MessageCircle size={28} />
                 </a>
             )}
@@ -280,8 +281,7 @@ export default function App() {
                         <p className="text-xs md:text-sm text-[#F9F6F0]/50">© 2026 Chef's Kiss. All rights reserved.</p>
                         <div className="flex gap-6 text-sm">
                             <a href="https://instagram.com/chefskisstory" target="_blank" rel="noreferrer" className="text-[#F9F6F0]/50 hover:text-[#E6C287] transition font-medium">Instagram</a>
-                            <a href="#" className="text-[#F9F6F0]/50 hover:text-[#E6C287] transition font-medium">TikTok</a>
-                            <a href="#" className="text-[#F9F6F0]/50 hover:text-[#E6C287] transition font-medium">WhatsApp</a>
+                            <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" className="text-[#F9F6F0]/50 hover:text-[#E6C287] transition font-medium">WhatsApp</a>
                         </div>
                     </div>
                 </div>
@@ -550,13 +550,23 @@ function CheckoutPage({ cart, totalPrice, formatRp, orderData, setOrderData, set
 function SuccessPage({ cart, totalPrice, formatRp, orderData, setPage, setCart }) {
     useEffect(() => { window.scrollTo(0,0); }, []);
 
-    const waNumber = "6281234567890"; // GANTI NO WA DI SINI
+    const waNumber = "6282171237157";
     
     const handleWAConfirm = () => {
         let text = `Halo Admin Chef's Kiss! ✨\nSaya mau konfirmasi pesanan dari Website:\n\n👤 *Nama:* ${orderData.name}\n📆 *Tgl Ambil:* ${orderData.date}\n\n*Detail Pesanan:*\n`;
         cart.forEach(item => { text += `- ${item.qty}x ${item.name} = ${formatRp(item.price * item.qty)}\n`; });
         text += `\n💰 *Total Bayar:* ${formatRp(totalPrice)}\n\nSaya sudah scan QRIS, bukti transfer akan saya lampirkan. Terima kasih!`;
         window.open(`https://wa.me/${6282171237157}?text=${encodeURIComponent(text)}`, '_blank');
+    };
+
+    const handleDownloadQRIS = () => {
+        // Membuat elemen link sementara
+        const link = document.createElement('a');
+        link.href = imgQris; // Mengambil gambar QRIS yang sudah di-import
+        link.download = 'QRIS-Chefs-Kiss.png'; // Nama file saat tersimpan di HP/Laptop
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -571,15 +581,19 @@ function SuccessPage({ cart, totalPrice, formatRp, orderData, setPage, setCart }
             <div className="bg-white p-8 rounded-[2rem] shadow-2xl border border-[#E6C287]/40 mb-10 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-2 bg-[#8A151B]"></div>
                 
-                <div className="w-64 h-64 mx-auto bg-gray-50 rounded-2xl mb-6 flex flex-col items-center justify-center border-4 border-dashed border-[#E6C287]/50 p-4">
-                    <span className="text-xs text-[#2D2D2D]/50 font-bold text-center">GAMBAR QRIS</span>
+                <div className="w-64 h-64 mx-auto mb-6 flex items-center justify-center bg-white p-2 rounded-2xl border-2 border-[#E6C287]/50 shadow-md">
+                    <img 
+                        src={imgQris} 
+                        alt="QRIS Pembayaran Chef's Kiss" 
+                        className="w-full h-full object-contain" 
+                    />
                 </div>
                 
                 <p className="text-sm text-[#2D2D2D]/60 font-medium">Total Tagihan:</p>
                 <p className="font-bold text-4xl text-[#8A151B] mb-1">{formatRp(totalPrice)}</p>
                 <p className="text-xs font-bold text-[#2D2D2D]/40 uppercase tracking-widest mb-6">a.n Chef's Kiss</p>
                 
-                <button onClick={() => alert("Fitur simpan QRIS aktif jika gambar sudah dimasukkan.")} className="text-sm font-bold text-[#8A151B] bg-[#8A151B]/10 px-8 py-3 rounded-full hover:bg-[#8A151B]/20 transition flex items-center justify-center gap-2 mx-auto">
+                <button onClick={handleDownloadQRIS} className="text-sm font-bold text-[#8A151B] bg-[#8A151B]/10 px-8 py-3 rounded-full hover:bg-[#8A151B]/20 transition flex items-center justify-center gap-2 mx-auto">
                     <Download size={16}/> Simpan QRIS
                 </button>
             </div>
