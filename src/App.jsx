@@ -14,6 +14,7 @@ import imgBundling1 from './assets/bundling-1.png';
 import imgBundling2 from './assets/bundling-2.png';
 import imgHero from './assets/hero.png';
 import imgQris from './assets/qris.jpeg'; 
+import imgLogo from './assets/logo.jpeg';
 
 // --- DATA ---
 const MENUS = [
@@ -50,7 +51,11 @@ const BUNDLINGS = [
     }
 ];
 
-const PICKUP_DATES = ['Senin, 18 Mei 2026', 'Rabu, 20 Mei 2026', 'Jumat, 22 Mei 2026'];
+const PICKUP_DATES = [
+    'Selasa, 5 Mei 2026', 
+    'Rabu, 6 Mei 2026', 
+    'Kamis, 7 Mei 2026'
+];
 
 export default function App() {
     const [page, setPage] = useState('home'); // 'home', 'checkout', 'success'
@@ -132,9 +137,16 @@ export default function App() {
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
                     {/* LOGO */}
                     <div className="flex items-center gap-3 cursor-pointer group" onClick={() => {setPage('home'); window.scrollTo(0,0);}}>
-                        <div className="bg-[#8A151B] text-white p-2 rounded-full group-hover:rotate-12 transition transform shadow-md">
-                            <ChefHat size={24} />
+                        
+                        {/* KOTAK LOGO BARU */}
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden shadow-sm group-hover:scale-105 transition transform border-2 border-[#E6C287]/50">
+                            <img 
+                                src={imgLogo} 
+                                alt="Logo Chef's Kiss" 
+                                className="w-full h-full object-cover" 
+                            />
                         </div>
+                        
                         <h1 className="font-bold text-2xl md:text-3xl brand-font text-[#8A151B]">Chef's Kiss</h1>
                     </div>
                     
@@ -144,6 +156,7 @@ export default function App() {
                             <a href="#home" className="text-[#2D2D2D] hover:text-[#8A151B] font-medium transition">Home</a>
                             <a href="#promo" className="text-[#2D2D2D] hover:text-[#8A151B] font-medium transition">Bundling</a>
                             <a href="#menu" className="text-[#2D2D2D] hover:text-[#8A151B] font-medium transition">Menu Utama</a>
+                            <a href="#social" className="text-[#2D2D2D] hover:text-[#8A151B] font-medium transition">Social</a>
                         </nav>
                     )}
 
@@ -278,7 +291,7 @@ export default function App() {
             <footer className="bg-[#2D2D2D] text-[#F9F6F0] pt-16 pb-8 border-t-[8px] border-[#8A151B] mt-auto">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-4xl md:text-5xl font-bold brand-font text-[#E6C287] mb-4">Chef's Kiss</h2>
-                    <p className="text-[#F9F6F0]/70 text-sm md:text-base max-w-sm md:max-w-md mx-auto mb-8">Menyajikan kebahagiaan premium di setiap gigitan untuk mahasiswa. Sampai jumpa di Market Day!</p>
+                    <p className="text-[#F9F6F0]/70 text-sm md:text-base max-w-sm md:max-w-md mx-auto mb-8">Menyajikan kebahagiaan premium di setiap gigitan untuk mahasiswa!</p>
                     <div className="border-t border-[#F9F6F0]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-xs md:text-sm text-[#F9F6F0]/50">© 2026 Chef's Kiss. All rights reserved.</p>
                         <div className="flex gap-6 text-sm">
@@ -426,7 +439,7 @@ function HomePage({ MENUS, BUNDLINGS, formatRp, setSelectedItem }) {
             <section className="py-16 md:py-24 bg-white border-t border-[#E6C287]/20">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10 md:mb-12 reveal">
-                        <h2 className="text-3xl md:text-5xl font-bold text-[#8A151B] brand-font mb-4">Ikuti Perjalanan Kami</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-[#8A151B] brand-font mb-4" id="social">Ikuti Perjalanan Kami</h2>
                         <a href="https://instagram.com/chefskisstory" target="_blank" rel="noreferrer" className="text-[#2D2D2D]/60 hover:text-[#8A151B] transition font-medium text-base inline-flex items-center gap-2">
                             @chefskisstory 
                             {/* Logo IG diganti pakai SVG murni agar anti-error */}
@@ -494,7 +507,7 @@ function CheckoutPage({ cart, totalPrice, formatRp, orderData, setOrderData, set
                             <input type="text" value={orderData.name} onChange={e => setOrderData({...orderData, name: e.target.value})} placeholder="Ketik namamu di sini..." className="w-full border border-[#E6C287]/50 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-[#8A151B] outline-none bg-[#F9F6F0]/50 font-medium"/>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-3">Pilih Tanggal Pengambilan (Market Day) <span className="text-red-500">*</span></label>
+                            <label className="block text-sm font-medium text-gray-700 mb-3">Pilih Tanggal Pengambilan <span className="text-red-500">*</span></label>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 {PICKUP_DATES.map(date => (
                                     <label key={date} className={`flex items-center p-4 border rounded-xl cursor-pointer transition-all ${orderData.date === date ? 'border-[#8A151B] bg-[#8A151B]/5 ring-1 ring-[#8A151B]' : 'border-gray-200 hover:border-[#E6C287] bg-white'}`}>
