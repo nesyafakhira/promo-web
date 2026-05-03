@@ -4,18 +4,49 @@ import {
     Phone, ChefHat, MessageCircle, Download, Check 
 } from 'lucide-react';
 
+// --- IMPORT GAMBAR DARI FOLDER ASSETS ---
+import imgCarbonara from './assets/pasta-carbonara.png';
+import imgBolognese from './assets/pasta-bolognese.png';
+import imgCheesecake from './assets/cheesecake-oreo.jpeg';
+import imgIcetea from './assets/ice-tea.png';
+import imgLychee from './assets/lychee-tea.png';
+import imgBundling1 from './assets/bundling-1.png'; 
+import imgBundling2 from './assets/bundling-2.png';
+import imgHero from './assets/hero.png';
+
 // --- DATA ---
 const MENUS = [
-    { id: 'm1', name: 'Pasta Carbonara', price: 18000, desc: 'Saus creamy lembut, gurih khas Italia dengan taburan keju melimpah.', badge: 'Paling Dicari', imgPlaceholder: '[Gambar Pasta Carbonara]' },
-    { id: 'm2', name: 'Pasta Bolognese', price: 18000, desc: 'Saus tomat rempah dipadukan daging cincang kaya rasa. Ramah di perut lapar.', badge: null, imgPlaceholder: '[Gambar Pasta Bolognese]' },
-    { id: 'm3', name: 'Cheesecake Oreo', price: 13000, desc: 'Layer oreo utuh berpadu cream cheese lumer. Perfect mood booster!', badge: '⭐ Bintang 5', imgPlaceholder: '[Gambar Cheesecake Oreo]' },
-    { id: 'm4', name: 'Lychee Tea', price: 8000, desc: 'Kesegaran teh pilihan dipadukan dengan buah leci asli yang manis.', badge: null, imgPlaceholder: '[Gambar Lychee Tea]' },
-    { id: 'm5', name: 'Ice Tea', price: 5000, desc: 'Teh manis dingin klasik yang segar. Pas banget untuk pelepas dahaga.', badge: null, imgPlaceholder: '[Gambar Ice Tea]' }
+    { id: 'm1', name: 'Pasta Carbonara', price: 18000, desc: 'Saus creamy lembut, gurih khas Italia dengan taburan keju melimpah.', badge: 'Paling Dicari', 
+      imgPlaceholder: <img src={imgCarbonara} alt="Carbonara" className="w-full h-full object-cover" /> },
+    { id: 'm2', name: 'Pasta Bolognese', price: 18000, desc: 'Saus tomat rempah dipadukan daging cincang kaya rasa. Ramah di perut lapar.', badge: null, 
+      imgPlaceholder: <img src={imgBolognese} alt="Bolognese" className="w-full h-full object-cover" /> },
+    { id: 'm3', name: 'Cheesecake Oreo', price: 13000, desc: 'Layer oreo utuh berpadu cream cheese lumer. Perfect mood booster!', badge: '⭐ Bintang 5', 
+      imgPlaceholder: <img src={imgCheesecake} alt="Cheesecake" className="w-full h-full object-cover" /> },
+    { id: 'm4', name: 'Lychee Tea', price: 8000, desc: 'Kesegaran teh pilihan dipadukan dengan buah leci asli yang manis.', badge: 'Menyegarkan', 
+      imgPlaceholder: <img src={imgLychee} alt="Lychee Tea" className="w-full h-full object-cover" /> },
+    { id: 'm5', name: 'Ice Tea', price: 5000, desc: 'Teh manis dingin klasik yang segar. Pas banget untuk pelepas dahaga.', badge: null, 
+      imgPlaceholder: <img src={imgIcetea} alt="Ice Tea" className="w-full h-full object-cover" /> }
 ];
 
 const BUNDLINGS = [
-    { id: 'b1', name: 'Bundling 1', desc: '1x Pasta Bolognese + 1x Ice Tea Segar', oldPrice: 23000, price: 20000, badge: 'HEMAT 3K', imgPlaceholder: '[Gambar Bolognese & Ice Tea]' },
-    { id: 'b2', name: 'Bundling 2', desc: '1x Pasta Carbonara + 1x Ice Tea Segar', oldPrice: 23000, price: 20000, badge: 'FAVORIT MABA', imgPlaceholder: '[Gambar Carbonara & Ice Tea]' }
+    { 
+        id: 'b1', 
+        name: 'Bundling 1', 
+        desc: '1x Pasta Bolognese + 1x Ice Tea Segar', 
+        oldPrice: 23000, 
+        price: 20000, 
+        badge: 'HEMAT 3K', 
+        imgPlaceholder: <img src={imgBundling1} alt="Bundling 1" className="w-full h-full object-cover" /> 
+    },
+    { 
+        id: 'b2', 
+        name: 'Bundling 2', 
+        desc: '1x Pasta Carbonara + 1x Ice Tea Segar', 
+        oldPrice: 23000, 
+        price: 20000, 
+        badge: 'FAVORIT SEMUA ORANG', 
+        imgPlaceholder: <img src={imgBundling2} alt="Bundling 2" className="w-full h-full object-cover" /> 
+    }
 ];
 
 const PICKUP_DATES = ['Senin, 18 Mei 2026', 'Rabu, 20 Mei 2026', 'Jumat, 22 Mei 2026'];
@@ -270,7 +301,11 @@ function HomePage({ MENUS, BUNDLINGS, formatRp, setSelectedItem }) {
                     <div className="absolute inset-0 bg-[#E6C287]/20 rounded-full blur-3xl transform scale-110 -z-10"></div>
                     <div className="relative w-full aspect-[4/3] md:aspect-square rounded-t-full rounded-bl-[4rem] rounded-br-2xl border-4 md:border-8 border-white shadow-xl md:shadow-2xl overflow-hidden bg-gray-100 flex items-center justify-center group">
                         <div className="w-full h-full bg-cover bg-center transition-transform duration-700 md:group-hover:scale-110 flex items-center justify-center">
-                            <div className="text-[#8A151B]/60 font-bold brand-font text-xl md:text-2xl rotate-[-10deg] px-4 text-center">[Gambar Makanan Premium]</div>
+                          <img 
+                            src={imgHero} 
+                            alt="Chef's Kiss Premium Pasta" 
+                            className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110" 
+                        />
                         </div>
                     </div>
                     <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white p-2 md:p-4 rounded-full shadow-lg animate-float-fast border border-[#E6C287]/30">
@@ -283,12 +318,11 @@ function HomePage({ MENUS, BUNDLINGS, formatRp, setSelectedItem }) {
                 </div>
 
                 <div className="flex-1 text-center md:text-left z-10 reveal order-2 md:order-1 mt-4 md:mt-0 relative">
-                    <span className="inline-block bg-[#E6C287]/20 text-[#8A151B] font-bold tracking-wider text-xs uppercase mb-3 md:mb-4 px-3 py-1 rounded-full border border-[#E6C287]/50">Market Day Special</span>
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 md:mb-6 text-[#2D2D2D] brand-font">
                         Kenikmatan <span className="italic text-[#8A151B]">Premium</span>,<br/> Harga Mahasiswa.
                     </h1>
                     <p className="text-base md:text-lg text-[#2D2D2D]/80 mb-6 md:mb-8 max-w-xl mx-auto md:mx-0">
-                        Manjakan dirimu pakai creamy-nya pasta khas Italia dan manisnya Cheesecake Oreo. Praktis, nikmat, dan porsinya pas buat nemenin tugas!
+                        Nikmati creamy-nya pasta khas Italia dan manisnya Cheesecake Oreo. Praktis, nikmat, dan porsinya pas buat nemenin tugas!
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
                         <a href="#menu" className="w-full sm:w-auto bg-[#8A151B] text-white px-8 py-3.5 rounded-full font-semibold text-base hover:bg-[#8A151B]/90 transition shadow-lg text-center transform md:hover:scale-105 duration-200">
@@ -317,8 +351,8 @@ function HomePage({ MENUS, BUNDLINGS, formatRp, setSelectedItem }) {
             <section id="promo" className="py-16 md:py-24 bg-white relative">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10 md:mb-16 reveal">
-                        <h2 className="text-3xl md:text-5xl font-bold text-[#8A151B] brand-font mb-4">Promo Market Day!</h2>
-                        <p className="text-base md:text-lg text-[#2D2D2D]/70 max-w-2xl mx-auto">Pilih paket hemat buat kenyang maksimal dengan harga miring.</p>
+                        <h2 className="text-3xl md:text-5xl font-bold text-[#8A151B] brand-font mb-4">Best Deals!</h2>
+                        <p className="text-base md:text-lg text-[#2D2D2D]/70 max-w-2xl mx-auto">Pilih paket hemat buat kenyang dengan harga yang ramah dikantong.</p>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
