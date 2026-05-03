@@ -230,7 +230,9 @@ export default function App() {
                             ) : (
                                 cart.map(item => (
                                     <div key={item.id} className="flex gap-4 mb-4 bg-white p-3 rounded-2xl shadow-sm border border-[#E6C287]/20 items-center">
-                                        <div className="w-16 h-16 bg-[#E6C287]/10 rounded-xl flex items-center justify-center text-[10px] text-center text-[#2D2D2D]/40 shrink-0 border border-[#E6C287]/20">Gambar</div>
+                                        <div className="w-16 h-16 bg-[#E6C287]/10 rounded-xl shrink-0 border border-[#E6C287]/20 overflow-hidden">
+                                            {item.imgPlaceholder}
+                                        </div>
                                         <div className="flex-1">
                                             <h4 className="font-bold text-sm text-[#2D2D2D] leading-tight mb-1">{item.name}</h4>
                                             <p className="text-[#8A151B] font-bold text-sm">{formatRp(item.price)}</p>
