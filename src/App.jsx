@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
-    ShoppingBag, Plus, Minus, X, ArrowLeft, CheckCircle2, 
-    Instagram, Phone, ChefHat, MessageCircle, Download, Check
+    ShoppingBag, Plus, Minus, X, ArrowLeft, CheckCircle, 
+    Phone, ChefHat, MessageCircle, Download, Check 
 } from 'lucide-react';
 
 // --- DATA ---
@@ -386,12 +386,19 @@ function HomePage({ MENUS, BUNDLINGS, formatRp, setSelectedItem }) {
             </section>
 
             {/* INSTAGRAM SECTION */}
+            {/* INSTAGRAM SECTION */}
             <section className="py-16 md:py-24 bg-white border-t border-[#E6C287]/20">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10 md:mb-12 reveal">
                         <h2 className="text-3xl md:text-5xl font-bold text-[#8A151B] brand-font mb-4">Ikuti Perjalanan Kami</h2>
                         <a href="https://instagram.com/chefskisstory" target="_blank" rel="noreferrer" className="text-[#2D2D2D]/60 hover:text-[#8A151B] transition font-medium text-base inline-flex items-center gap-2">
-                            @chefskisstory <Instagram size={18} />
+                            @chefskisstory 
+                            {/* Logo IG diganti pakai SVG murni agar anti-error */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
                         </a>
                     </div>
                     
@@ -406,7 +413,13 @@ function HomePage({ MENUS, BUNDLINGS, formatRp, setSelectedItem }) {
                     </div>
                     <div className="text-center mt-10 md:mt-14 reveal">
                         <a href="https://instagram.com/chefskisstory" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#2D2D2D] text-white px-8 py-3.5 rounded-full font-bold hover:bg-[#2D2D2D]/80 transition shadow-lg text-base">
-                            Follow Instagram Kami <Instagram size={18} />
+                            Follow Instagram Kami 
+                            {/* Logo IG diganti pakai SVG murni agar anti-error */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -509,13 +522,13 @@ function SuccessPage({ cart, totalPrice, formatRp, orderData, setPage, setCart }
         let text = `Halo Admin Chef's Kiss! ✨\nSaya mau konfirmasi pesanan dari Website:\n\n👤 *Nama:* ${orderData.name}\n📆 *Tgl Ambil:* ${orderData.date}\n\n*Detail Pesanan:*\n`;
         cart.forEach(item => { text += `- ${item.qty}x ${item.name} = ${formatRp(item.price * item.qty)}\n`; });
         text += `\n💰 *Total Bayar:* ${formatRp(totalPrice)}\n\nSaya sudah scan QRIS, bukti transfer akan saya lampirkan. Terima kasih!`;
-        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`, '_blank');
+        window.open(`https://wa.me/${6282171237157}?text=${encodeURIComponent(text)}`, '_blank');
     };
 
     return (
         <div className="max-w-md mx-auto px-4 py-12 text-center animate-fade-in">
             <div className="w-24 h-24 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
-                <CheckCircle2 size={48} />
+                <CheckCircle size={48} />
             </div>
             
             <h2 className="text-3xl font-bold brand-font text-[#2D2D2D] mb-2">Order Direkam!</h2>
